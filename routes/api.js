@@ -28,6 +28,7 @@ router.post('/import', h(async (q, s) => {
   s.json({ imported: rows.length });
 }));
 
+router.get('/health', (q, s) => s.json({ ok: true }));
 router.get('/meta', h(async (q, s) => s.json({ domains: (await db.query('SELECT DISTINCT domain FROM connections ORDER BY 1')).rows.map(o => o.domain) })));
 
 router.get('/stats', h(async (q, s) => {

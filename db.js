@@ -1,6 +1,7 @@
+require('dotenv').config(); // no-op when there is no .env file (e.g. on Render)
 const { Pool } = require('pg');
 
-if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is missing. Add it to .env');
+if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL is missing. Add it to .env (local) or the Render environment tab.');
 
 const local = /localhost|127\.0\.0\.1/.test(process.env.DATABASE_URL);
 const pool = new Pool({
