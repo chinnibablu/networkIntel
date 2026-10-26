@@ -17,6 +17,7 @@ if (APP_PASSWORD) {
 
 app.use(express.json({ limit: '30mb' }));
 app.use('/api', require('./routes/api'));
+app.use('/api/messages', require('./routes/messages'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 
